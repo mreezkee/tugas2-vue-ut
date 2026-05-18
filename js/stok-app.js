@@ -159,6 +159,8 @@ var app = new Vue({
         if (this.sortBy === "judul_desc") return b.judul.localeCompare(a.judul);
         if (this.sortBy === "stok_asc") return a.qty - b.qty;
         if (this.sortBy === "stok_desc") return b.qty - a.qty;
+        if (this.sortBy === "harga_asc") return a.harga - b.harga;
+        if (this.sortBy === "harga_desc") return b.harga - a.harga;
       });
 
       return dataHasil;
