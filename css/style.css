@@ -538,7 +538,11 @@ input:focus {
   font-weight: 600;
   white-space: nowrap;
 }
-
+.status-badge i {
+  margin-right: 8px; /* Jarak antara ikon dan teks */
+  font-size: 0.9em;
+  opacity: 0.8; /* Ikon dibuat sedikit lebih lembut */
+}
 /* Warna untuk masing-class status */
 .badge-kosong {
   background-color: #fee2e2;
@@ -757,7 +761,224 @@ input:focus {
   margin: 0;
   font-size: 1.2rem;
 }
+.search-box-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+.search-box-container i {
+  color: #64748b;
+  margin-right: 10px;
+}
+.search-box-container input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 0.95rem;
+  color: #1e293b;
+}
 
+/* 2. Kondisi Tabel Kosong (Empty State) */
+.table-empty-state {
+  text-align: center;
+  padding: 40px !important;
+  color: #64748b;
+}
+.table-empty-state i {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+/* 3. Teks Subtitle (Warna Abu-abu Meredup) */
+.text-subtitle {
+  color: #64748b;
+}
+
+/* 4. Form Input Terkunci (Readonly / Auto) */
+input.input-readonly {
+  background-color: #f1f5f9;
+  font-weight: bold;
+  color: #475569;
+  cursor: not-allowed;
+}
+input.input-readonly-success {
+  background-color: #f1f5f9;
+  font-weight: bold;
+  color: #10b981; /* Hijau Sukses */
+  cursor: not-allowed;
+}
+
+.table-responsive table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-responsive th,
+.table-responsive td {
+  padding: 15px 20px; /* Jarak atas-bawah 15px, kiri-kanan 20px */
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.badge-gudang {
+  background-color: #fef08a;
+  color: #854d0e;
+} /* Kuning */
+.badge-jemput {
+  background-color: #bfdbfe;
+  color: #1e3a8a;
+} /* Biru Muda */
+.badge-kirim {
+  background-color: #bbf7d0;
+  color: #166534;
+} /* Hijau Muda */
+.badge-terima {
+  background-color: #86efac;
+  color: #14532d;
+} /* Hijau Tua */
+.paket-detail-card {
+  background-color: #f8fafc;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: -5px;
+  grid-column: span 2;
+}
+
+.paket-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.detail-title {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #3b82f6;
+  letter-spacing: 1px;
+}
+.detail-price {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #10b981;
+}
+.paket-detail-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 15px;
+}
+.paket-item-badge {
+  background: #e2e8f0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.paket-item-badge i {
+  color: #94a3b8;
+}
+@keyframes statusPulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Kelas CSS untuk mengaktifkan animasi */
+.status-live-blink {
+  animation: statusPulse 2s infinite ease-in-out;
+}
+
+/*Overlay Loading & Success*/
+.system-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.7);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.system-popup {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  /* Animasi pop-up melompat sedikit (bouncing) */
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Lingkaran Loading Berputar */
+.spinner {
+  border: 5px solid #f1f5f9;
+  border-top: 5px solid #3b82f6; /* Warna biru */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px auto;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Ikon Centang Berhasil */
+.success-icon {
+  font-size: 4rem;
+  color: #10b981;
+  margin-bottom: 15px;
+  /* Animasi membesar saat muncul */
+  animation: bounceScale 0.5s ease-out forwards;
+}
+@keyframes bounceScale {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 /* Untuk media screen hp */
 @media screen and (max-width: 768px) {
   .mobile-header {

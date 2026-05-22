@@ -92,6 +92,14 @@ var app = new Vue({
       safety: null,
       catatanHTML: "",
     },
+
+    //variable edit & animasi
+    isEditMode: false,
+    kodeYangDiedit: null,
+    isProcessing: false,
+    isSuccess: false,
+
+    //Variable penampung form
   },
 
   //WATCHERS (Memantau Perubahan Data)
@@ -170,20 +178,21 @@ var app = new Vue({
   // 4. METHODS (Fungsi Aksi Manual)
 
   methods: {
-    // Fungsi ini dipanggil saat tombol Reset diklik
-    resetFilter: function () {
-      this.filterUpbjj = "";
-      this.filterKategori = "";
-      this.filterStatus = "";
-      this.sortBy = "judul_asc";
+    //Fungsi membuka modal mode edit
+    bukaModalEdit: function (buku) {
+      this.isEditMode = true;
+      this.kodeYangDiedit = buku.kode;
+
+      // Salin data buku yang dipilih ke dalam wadah baruBuku
+      this.baruBuku = { ...buku };
+
+      this.showModal = true;
     },
 
-    //Fungsi simpan Buku
-    simpanBuku: function () {
-      // Memasukkan objek baru ke dalam array stok asli
-      this.stok.push({ ...this.baruBuku });
-
-      // Reset kembali isi form agar kosong saat dibuka lagi nanti
+    bukaModalTambah: function () {
+      this.isEditMode = false;
+      this.kodeYangDiedit = null;
+      // Kosongkan form untuk persiapan input data baru
       this.baruBuku = {
         kode: "",
         judul: "",
@@ -195,9 +204,78 @@ var app = new Vue({
         safety: null,
         catatanHTML: "",
       };
+      this.showModal = true;
+    },
 
+    // Fungsi menutup modal dan mereset form (Bisa dipasang di tombol X atau Batal)
+    tutupModal: function () {
+      this.showModal = false;
+      this.isEditMode = false;
+      this.kodeYangDiedit = null;
+      this.baruBuku = {
+        kode: "",
+        judul: "",
+        kategori: "",
+        upbjj: "",
+        lokasiRak: "",
+        harga: null,
+        qty: null,
+        safety: null,
+        catatanHTML: "",
+      };
+    },
+
+    // Fungsi ini dipanggil saat tombol Reset diklik
+    resetFilter: function () {
+      this.filterUpbjj = "";
+      this.filterKategori = "";
+      this.filterStatus = "";
+      this.sortBy = "judul_asc";
+    },
+
+    //Fungsi simpan Buku
+    simpanBuku: function () {
       // Tutup modal secara otomatis
       this.showModal = false;
+      this.isProcessing = true;
+
+      setTimeout(() => {
+        this.isProcessing = false;
+        this.isSuccess = true;
+
+        if (this.isEditMode === true) {
+          let index = this.stok.findIndex(
+            (item) => item.kode === this.kodeYangDiedit,
+          );
+
+          if (index != -1) {
+            //Jika ketemu Timpah
+            this.stok.splice(index, 1, { ...this.baruBuku });
+          }
+        } else {
+          // Memasukkan objek baru ke dalam array stok asli
+          this.stok.push({ ...this.baruBuku });
+        }
+
+        this.isEditMode = false;
+        this.kodeYangDiedit = null;
+        // Reset kembali isi form agar kosong saat dibuka lagi nanti
+        this.baruBuku = {
+          kode: "",
+          judul: "",
+          kategori: "",
+          upbjj: "",
+          lokasiRak: "",
+          harga: null,
+          qty: null,
+          safety: null,
+          catatanHTML: "",
+        };
+
+        setTimeout(() => {
+          this.isSuccess = false;
+        }, 1500);
+      }, 1500);
     },
   },
 });
