@@ -62,7 +62,7 @@
         <section class="content-area">
           <div class="card">
             <div class="table-header-container">
-              <div class="table-title-group">
+              <div class="table-title-group search-wrapper">
                 <div class="search-box-container">
                   <i class="fa-solid fa-magnifying-glass"></i>
                   <input
@@ -72,10 +72,6 @@
                   />
                 </div>
               </div>
-
-              <button @click="bukaModalTambah" class="btn-tambah">
-                <i class="fa-solid fa-plus"></i> Input DO Baru
-              </button>
             </div>
           </div>
         </section>
@@ -86,6 +82,9 @@
               <h3 class="table-title">
                 <i class="fa-solid fa-truck-fast"></i> Riwayat Delivery Order
               </h3>
+              <button @click="bukaModalTambah" class="btn-tambah">
+                <i class="fa-solid fa-plus"></i> Input DO Baru
+              </button>
             </div>
 
             <div class="table-responsive animasi-table">

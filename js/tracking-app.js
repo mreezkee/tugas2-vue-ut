@@ -6,6 +6,7 @@ var app = new Vue({
     showModal: false,
     isProcessing: false,
     isSuccess: false,
+    sidebarOpen: false,
 
     pengirimanList: [
       { kode: "REG", nama: "Reguler (3-5 hari)" },

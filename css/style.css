@@ -782,6 +782,10 @@ input:focus {
   font-size: 0.95rem;
   color: #1e293b;
 }
+.search-wrapper {
+  flex: 1;
+  margin-right: 30px; /* Jarak aman agar tidak menabrak tombol di kanannya */
+}
 
 /* 2. Kondisi Tabel Kosong (Empty State) */
 .table-empty-state {
