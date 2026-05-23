@@ -16,7 +16,7 @@
 body.dark-mode,
 body.dark-mode .content-area,
 body.dark-mode .main-content {
-  background-color: #0f172a; /* Biru dongker sangat gelap */
+  background-color: #0f172a;
   color: #f1f5f9;
 }
 body.dark-mode h2,
@@ -37,7 +37,7 @@ body.dark-mode .card-body p {
 body.dark-mode .btn-theme-toggle {
   background-color: #334155;
   border-color: #475569;
-  color: #facc15; /* Warna ikon berubah kuning cerah (matahari) */
+  color: #facc15;
 }
 body.dark-mode select,
 body.dark-mode input,
@@ -1251,7 +1251,7 @@ input.input-readonly-success {
 /* Untuk media screen hp */
 @media screen and (max-width: 768px) {
   .mobile-header {
-    display: flex; /* Munculkan di layar kecil */
+    display: flex;
   }
   .sidebar-overlay {
     position: fixed;
@@ -1259,19 +1259,19 @@ input.input-readonly-success {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Hitam transparan */
-    z-index: 999; /* Berada tepat di bawah sidebar (1000) */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
   }
   .sidebar {
     position: fixed;
-    left: -250px; /* Sembunyikan di luar layar sebelah kiri */
+    left: -250px;
     top: 0;
     height: 100vh;
     z-index: 1000;
-    transition: left 0.3s ease; /* Animasi geser halus */
+    transition: left 0.3s ease;
   }
   .sidebar.sidebar-active {
-    left: 0; /* Geser masuk ke dalam layar */
+    left: 0;
   }
   .split-container {
     flex-direction: column;
